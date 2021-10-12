@@ -15,11 +15,13 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("skarra9821/hello:${env.BUILD_ID}")
+                    docker.withRegistry('', 'dockerhub') {
+                        def customImage = docker.build("skarra9821/node-app:${env.BUILD_ID}")
+                        customImage.push()
+                    }
                 }
             }
-        }
-        stage("Push image") {
+        /*stage("Push image") {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
@@ -28,7 +30,7 @@ pipeline {
                     }
                 }
             }
-        }        
+        }*/        
         stage('Deploy to GKE') {
             steps{
                 sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
