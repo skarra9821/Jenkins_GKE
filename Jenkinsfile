@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         PROJECT_ID = 'seismic-octane-322420'
-        CLUSTER_NAME = 'JenkinsGKE'
+        CLUSTER_NAME = 'jenkinsgke'
         LOCATION = 'us-east1'
         CREDENTIALS_ID = 'gke'
     }
