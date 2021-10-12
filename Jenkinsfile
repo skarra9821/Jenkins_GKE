@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT_ID = 'seismic-octane-322420'
         CLUSTER_NAME = 'jenkinsgke'
-        LOCATION = 'us-east1'
+        LOCATION = 'us-east1-b'
         CREDENTIALS_ID = 'gke'
     }
     stages {
